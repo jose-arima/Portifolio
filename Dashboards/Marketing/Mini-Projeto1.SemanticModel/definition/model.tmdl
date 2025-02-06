@@ -1,0 +1,22 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DadosMarketing"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.139.2054.0 (24.12)+334ca1c95b576cc53924655643b0d36f21caac55
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_ad18e336-3ea3-4356-b3c9-d6b9ea8b6868
+ref table DadosMarketing
+ref table LocalDateTable_a8c13822-9bd9-4fc7-8ccc-6fca296dafc3
+
+ref cultureInfo pt-BR
+
