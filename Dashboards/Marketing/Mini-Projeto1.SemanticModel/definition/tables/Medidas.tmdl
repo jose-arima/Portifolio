@@ -1,0 +1,40 @@
+table Medidas
+	lineageTag: ddb75e80-089f-42bb-8a65-445cca24c03c
+
+	measure 'Total de Clientes' = COUNT(DadosMarketing[ID])
+		formatString: #,0
+		lineageTag: 403abdbb-e0cb-40cb-a5b0-a23e60fdf245
+
+	measure 'Média de Salário Anual' = AVERAGE(DadosMarketing[Salario Anual])
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: db78e1c7-c9ce-42b1-a7ac-7270e61f43ef
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'Total de Compras em Lojas' = SUM(DadosMarketing[Numero de Compras na Loja] )
+		formatString: #,0
+		lineageTag: d5ccd10a-9f41-4cb8-930b-5a03d13fcf5b
+
+	measure 'Total de Compras na Web' = SUM(DadosMarketing[Numero de Compras na Web] )
+		formatString: #,0
+		lineageTag: a12ef20a-33ce-416a-8909-6c7aaa48f6e1
+
+	measure 'Total de Compras via Catálogo' = SUM(DadosMarketing[Numero de Compras via Catalogo] )
+		formatString: #,0
+		lineageTag: 2f1f6241-c2f7-4639-b678-b2dead621d09
+
+	measure 'Total de Compras com Desconto' = SUM(DadosMarketing[Numero de Compras com Desconto] )
+		formatString: #,0
+		lineageTag: 3efa1b2b-16c7-422d-a6de-68f231573ee8
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Colunas Removidas" = Table.RemoveColumns(Fonte,{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

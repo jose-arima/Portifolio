@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["DadosMarketing"]
+annotation PBI_QueryOrder = ["DadosMarketing","Medidas"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -17,6 +17,7 @@ annotation PBI_ProTooling = ["DevMode"]
 ref table DateTableTemplate_ad18e336-3ea3-4356-b3c9-d6b9ea8b6868
 ref table DadosMarketing
 ref table LocalDateTable_a8c13822-9bd9-4fc7-8ccc-6fca296dafc3
+ref table Medidas
 
 ref cultureInfo pt-BR
 

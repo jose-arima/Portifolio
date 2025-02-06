@@ -7,7 +7,7 @@ table DadosMarketing
 
 	column ID
 		dataType: int64
-		formatString: 0
+		formatString: #,0
 		lineageTag: 599e4e44-175b-4f7d-81a8-4937fa42bb41
 		summarizeBy: count
 		sourceColumn: ID
